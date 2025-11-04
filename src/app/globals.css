@@ -11,6 +11,62 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
+@import "tailwindcss";
+
+/* Base Light Theme Colors */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --theme-color: #eb2c25; /* 🔹 change this to change the entire accent color */
+}
+
+/* Tailwind Theme Integration */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-theme: var(--theme-color);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --theme-color: #3b82f6; /* slightly lighter in dark mode */
+  }
+}
+
+/* Global Styles */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  transition: var(--background) 0.3s, color 0.3s;
+}
+
+/* Reusable Button Style */
+.btn-primary {
+  @apply px-4 py-2 rounded-lg font-semibold text-white transition-all;
+  background-color: var(--theme-color);
+}
+.btn-primary:hover {
+  filter: brightness(1.1);
+}
+
+/* Accent Text Utility */
+.text-theme {
+  color: var(--theme-color);
+}
+
+/* Border / Shadow Accent */
+.border-theme {
+  border-color: var(--theme-color);
+}
+.shadow-theme {
+  box-shadow: 0 4px 12px -2px var(--theme-color);
+}
 
 @media (prefers-color-scheme: dark) {
   :root {
