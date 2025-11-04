@@ -2,7 +2,7 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #eb2c25;
 }
 
 @theme inline {
@@ -16,7 +16,7 @@
 /* Base Light Theme Colors */
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #eb2c25;
   --theme-color: #eb2c25; /* 🔹 change this to change the entire accent color */
 }
 
@@ -32,9 +32,9 @@
 /* Dark Mode */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #eb2c25;
     --foreground: #ededed;
-    --theme-color: #3b82f6; /* slightly lighter in dark mode */
+    --theme-color: #eb2c25; /* slightly lighter in dark mode */
   }
 }
 
@@ -70,7 +70,7 @@ body {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #eb2c25;
     --foreground: #ededed;
   }
 }
