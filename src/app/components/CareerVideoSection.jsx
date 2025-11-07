@@ -20,7 +20,7 @@ export default function CareerVideoSection() {
           <div className="w-full h-[500px] md:h-[600px] rounded-2xl">
             <iframe
               className="w-full h-full rounded-2xl"
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ" // 🔗 Replace with your video URL
+              src="https://drive.google.com/file/d/12LV3Syod_x9Pk_Rb90U8XwPccTrsQT2H/preview" // 🔗 Replace with your video URL
               title="Hospital Billing Training Overview"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
