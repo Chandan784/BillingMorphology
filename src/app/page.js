@@ -23,7 +23,7 @@ export default function Home() {
         </section>
 
         <TrainingSuccess />
-        <CareerVideoSection />
+        {/* <CareerVideoSection /> */}
 
         {/* Video Section */}
 
