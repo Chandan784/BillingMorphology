@@ -8,15 +8,13 @@ export default function TeamSection() {
     {
       name: "Mr. Srinivas Naik M",
       role: "Founder & Principal Faculty",
-      image:
-        "https://images.unsplash.com/photo-1603415526960-f7e0328b37f3?auto=format&fit=crop&w=800&q=80",
+      image: "./f1.jpg",
       description: `Mr. Srinivas Naik M, Founder and Principal Faculty of Billing Morphology Academy™, is a strategic and results-driven healthcare leader with over 20+ years of experience spanning hospital operations, health insurance, and revenue cycle management (RCM). Currently serving as Head of Revenue Assurance and Credit Receivables at Apollo Health & Lifestyle Ltd., he oversees billing governance, audit control, and pricing strategy across more than 100 healthcare centers. Renowned for transforming revenue operations, he has achieved a 15% reduction in revenue leakages, 20% faster discharge billing, and 98.8% TPA claim accuracy. Driven by his belief that “Billing is the anatomy of hospital finance,” Srinivas founded the Academy™ to professionalize hospital billing education through structured certifications like the Certified Billing Morphologist™ (CBM) program. His upcoming book, "The Blue Ocean of Healthcare Revenue Assurance," encapsulates his mission to transform billing into a precision-driven, ethical, and audit-ready science.`,
     },
     {
       name: "Dr. Prashanth Belavadi",
       role: "Co-Founder & Faculty",
-      image:
-        "https://images.unsplash.com/photo-1573497491208-6b1acb260507?auto=format&fit=crop&w=800&q=80",
+      image: "./f2.jpg",
       description: `Dr. Prashanth Belavadi is a visionary healthcare strategist, Ayurveda physician, and business leader with over 18 years of experience in hospital operations, healthcare management, and holistic medicine. As Co-Founder and Business Strategist at Billing Morphology Academy™, he combines clinical insight with strategic foresight to redefine how hospitals approach billing, operational excellence, and patient-centric financial systems. He has led multi-city healthcare operations, optimized cost structures, and built cross-functional teams that drive measurable revenue growth. Through his mentorship at the Academy™, he empowers learners to see beyond processes—to build financially resilient and ethically strong healthcare organizations. Dr. Prashanth is also Chief Ayurveda Consultant at Vijando Male Wellness Center and an advocate for integrating scientific billing, clinical transparency, and operational ethics in healthcare education.`,
     },
   ];
