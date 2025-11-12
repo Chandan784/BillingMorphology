@@ -22,7 +22,7 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no root@82.29.161.242 << 'EOF'
             echo "🔄 Pulling latest frontend code..."
-            cd ~/BillingMorphologyAcademy
+            cd ~/BillingMorphology
             git pull origin main
 
             echo "🧹 Stopping and removing old container..."
