@@ -9,6 +9,9 @@ import Hero from "./components/Hero";
 import TrainingSuccess from "./components/TrainingSucess";
 import CareerVideoSection from "./components/CareerVideoSection";
 import CourseLevelsSection from "./components/CourseLevelSection";
+import AboutUsSection from "./components/TeamSection";
+import { Contact } from "lucide-react";
+import ContactUsSection from "./components/CotactusSection";
 
 export default function Home() {
   return (
@@ -18,22 +21,21 @@ export default function Home() {
         <Hero />
 
         {/* TRUSTED BY */}
-        <section className="mt-12">
-          <TrustedBy />
-        </section>
-
+        <TrustedBy />
+        <CareerVideoSection />
         <TrainingSuccess />
         {/* <CareerVideoSection /> */}
 
         {/* Video Section */}
 
         {/* Testimonials */}
-        <section className="mt-12">
-          <Testimonials />
-        </section>
-        <section className="mt-12">
-          <CourseLevelsSection />
-        </section>
+
+        <Testimonials />
+
+        <CourseLevelsSection />
+
+        <AboutUsSection />
+        <ContactUsSection />
       </main>
     </>
   );

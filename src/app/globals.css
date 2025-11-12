@@ -17,7 +17,7 @@
 :root {
   --background: #ffffff;
   --foreground: #eb2c25;
-  --theme-color: #eb2c25; /* 🔹 change this to change the entire accent color */
+  --theme-color: #49838c; /* 🔹 change this to change the entire accent color */
 }
 
 /* Tailwind Theme Integration */

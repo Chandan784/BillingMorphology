@@ -12,9 +12,7 @@ export default function Header() {
       <div className="flex items-center justify-between px-6 md:px-16 py-4">
         {/* Logo / Brand */}
         <Link href="/" className="flex items-center gap-2">
-          <h1 className="text-2xl font-bold text-[var(--theme-color)] hover:opacity-90 transition">
-            BillingMorphology
-          </h1>
+          <img height={200} width={240} src="./logo2.png" alt="" />
         </Link>
 
         {/* Desktop Nav */}
@@ -31,18 +29,18 @@ export default function Header() {
           >
             Courses
           </Link>
-          {/* <Link
-            href="/about"
+          <Link
+            href="/about-us"
             className="hover:text-[var(--theme-color)] transition-colors"
           >
             About
           </Link>
           <Link
-            href="/contact"
+            href="/contact-us"
             className="hover:text-[var(--theme-color)] transition-colors"
           >
             Contact
-          </Link> */}
+          </Link>
           <Link
             href="/login"
             className="bg-[var(--theme-color)] text-white px-5 py-2 rounded-full hover:shadow-[0_0_10px_rgba(0,0,0,0.15)] transition-all"
@@ -85,20 +83,20 @@ export default function Header() {
           >
             Courses
           </Link>
-          {/* <Link
-            href="/about"
+          <Link
+            href="/about-us"
             onClick={() => setMenuOpen(false)}
             className="hover:text-[var(--theme-color)] transition-colors"
           >
             About
           </Link>
           <Link
-            href="/contact"
+            href="/contact-us"
             onClick={() => setMenuOpen(false)}
             className="hover:text-[var(--theme-color)] transition-colors"
           >
             Contact
-          </Link> */}
+          </Link>
           <Link
             href="/login"
             onClick={() => setMenuOpen(false)}
