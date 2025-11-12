@@ -18,7 +18,7 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.VPS_SSH_KEY }}
 
-      - name: Deploy Frontend to VPS
+      - name: Deploy Frontend to VPS Server
         run: |
           ssh -o StrictHostKeyChecking=no root@82.29.161.242 << 'EOF'
             echo "🔄 Pulling latest frontend code..."
