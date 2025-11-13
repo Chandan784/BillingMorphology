@@ -1,99 +1,99 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 export default function TeamSection() {
+  const router = useRouter();
+
   const faculty = [
     {
       name: "Mr. Srinivas Naik M",
       role: "Founder & Principal Faculty",
-      image: "./f1.jpg",
-      description: `Mr. Srinivas Naik M, Founder and Principal Faculty of Billing Morphology Academy™, is a strategic and results-driven healthcare leader with over 20+ years of experience spanning hospital operations, health insurance, and revenue cycle management (RCM). Currently serving as Head of Revenue Assurance and Credit Receivables at Apollo Health & Lifestyle Ltd., he oversees billing governance, audit control, and pricing strategy across more than 100 healthcare centers. Renowned for transforming revenue operations, he has achieved a 15% reduction in revenue leakages, 20% faster discharge billing, and 98.8% TPA claim accuracy. Driven by his belief that “Billing is the anatomy of hospital finance,” Srinivas founded the Academy™ to professionalize hospital billing education through structured certifications like the Certified Billing Morphologist™ (CBM) program. His upcoming book, "The Blue Ocean of Healthcare Revenue Assurance," encapsulates his mission to transform billing into a precision-driven, ethical, and audit-ready science.`,
+      image: "/f2.jpg",
+      short:
+        "A strategic and results-driven healthcare leader with over 20+ years of experience spanning hospital operations, health insurance, and revenue cycle management (RCM).",
     },
     {
       name: "Dr. Prashanth Belavadi",
       role: "Co-Founder & Faculty",
-      image: "./f2.jpg",
-      description: `Dr. Prashanth Belavadi is a visionary healthcare strategist, Ayurveda physician, and business leader with over 18 years of experience in hospital operations, healthcare management, and holistic medicine. As Co-Founder and Business Strategist at Billing Morphology Academy™, he combines clinical insight with strategic foresight to redefine how hospitals approach billing, operational excellence, and patient-centric financial systems. He has led multi-city healthcare operations, optimized cost structures, and built cross-functional teams that drive measurable revenue growth. Through his mentorship at the Academy™, he empowers learners to see beyond processes—to build financially resilient and ethically strong healthcare organizations. Dr. Prashanth is also Chief Ayurveda Consultant at Vijando Male Wellness Center and an advocate for integrating scientific billing, clinical transparency, and operational ethics in healthcare education.`,
+      image: "/f1.jpg",
+      short:
+        "A visionary healthcare strategist and Ayurveda physician with 18+ years in hospital operations, healthcare management, and holistic medicine leadership.",
     },
   ];
 
   return (
-    <section className="bg-gradient-to-b from-[#f9fafb] to-white py-20 px-6 md:px-16">
+    <section className="bg-gradient-to-b from-[#f8fafc] to-white py-20 px-6 md:px-12">
       <div className="max-w-6xl mx-auto text-center">
         {/* Heading */}
         <motion.h2
-          className="text-3xl md:text-4xl font-bold text-gray-900"
-          initial={{ opacity: 0, y: 20 }}
+          className="text-3xl md:text-5xl font-extrabold text-gray-900 leading-tight"
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
           Founders & Faculty Team
         </motion.h2>
+
         <motion.p
-          className="mt-4 text-gray-600 max-w-3xl mx-auto text-lg"
-          initial={{ opacity: 0, y: 20 }}
+          className="mt-4 text-gray-600 max-w-2xl mx-auto text-lg"
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.8 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
           viewport={{ once: true }}
         >
-          Meet the visionaries behind Billing Morphology Academy™, bringing
-          decades of expertise in hospital billing, healthcare finance, and
-          operational excellence.
+          Meet the visionaries behind{" "}
+          <span className="font-semibold text-[#31576d]">
+            Billing Morphology Academy™
+          </span>
+          — leading professionals shaping the future of hospital billing,
+          finance, and healthcare excellence.
         </motion.p>
 
-        {/* Faculty Cards */}
-        <div className="grid md:grid-cols-2 gap-10 mt-16">
+        {/* Cards */}
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
           {faculty.map((person, i) => (
-            <FacultyCard key={i} person={person} index={i} />
+            <motion.div
+              key={i}
+              className="group relative bg-white shadow-md hover:shadow-2xl rounded-3xl p-8 transition-all duration-300 border border-gray-100 flex flex-col items-center text-center"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.3, duration: 0.7 }}
+              viewport={{ once: true }}
+            >
+              {/* Circular Profile Image */}
+              <div className="relative w-40 h-40 md:w-48 md:h-48 mb-6">
+                <img
+                  src={person.image}
+                  alt={person.name}
+                  className="w-full h-full object-cover rounded-full border-[6px] border-[#edf2f7] shadow-lg transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#31576d]/20 to-[#49838c]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+
+              {/* Text Section */}
+              <h3 className="text-2xl font-bold text-[#31415d]">
+                {person.name}
+              </h3>
+              <p className="text-sm text-gray-500 font-medium mt-1 mb-4">
+                {person.role}
+              </p>
+              <p className="text-gray-700 text-base leading-relaxed max-w-md">
+                {person.short}
+              </p>
+
+              <button
+                onClick={() => router.push("/about-us")}
+                className="mt-6 inline-block bg-gradient-to-r from-[#31576d] to-[#49838c] text-white font-semibold py-2 px-6 rounded-full shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300"
+              >
+                Learn More →
+              </button>
+            </motion.div>
           ))}
         </div>
       </div>
     </section>
-  );
-}
-
-function FacultyCard({ person, index }) {
-  const [expanded, setExpanded] = useState(false);
-
-  return (
-    <motion.div
-      className="bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 cursor-pointer hover:shadow-2xl transition-transform transform hover:-translate-y-2 flex flex-col md:flex-row"
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.3, duration: 0.8 }}
-      viewport={{ once: true }}
-    >
-      <div className="md:w-1/3 h-64 md:h-auto relative">
-        <img
-          src={person.image}
-          alt={person.name}
-          className="w-full h-full object-cover rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none"
-        />
-      </div>
-      <div className="p-6 md:p-8 text-left md:w-2/3 flex flex-col justify-between">
-        <div>
-          <h3 className="text-2xl font-extrabold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-[#31415d] to-[#49838c]">
-            {person.name}
-          </h3>
-          <p className="text-sm text-gray-500 font-semibold mb-4">
-            {person.role}
-          </p>
-          <p className="text-gray-700 leading-relaxed">
-            {expanded
-              ? person.description
-              : person.description.slice(0, 250) + "..."}
-          </p>
-          <button
-            onClick={() => setExpanded(!expanded)}
-            className="mt-4 text-[#31415d] font-semibold hover:underline"
-          >
-            {expanded ? "Read Less" : "Read More"}
-          </button>
-        </div>
-      </div>
-    </motion.div>
   );
 }

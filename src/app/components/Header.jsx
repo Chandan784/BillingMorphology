@@ -12,7 +12,7 @@ export default function Header() {
       <div className="flex items-center justify-between px-6 md:px-16 py-4">
         {/* Logo / Brand */}
         <Link href="/" className="flex items-center gap-2">
-          <img height={200} width={240} src="./logo2.png" alt="" />
+          <img height={200} width={240} src="/logo2.png" alt="" />
         </Link>
 
         {/* Desktop Nav */}
@@ -24,7 +24,7 @@ export default function Header() {
             Home
           </Link>
           <Link
-            href="/courses"
+            href="/Course"
             className="hover:text-[var(--theme-color)] transition-colors"
           >
             Courses
@@ -84,7 +84,7 @@ export default function Header() {
             Courses
           </Link>
           <Link
-            href="/about-us"
+            href="/Course"
             onClick={() => setMenuOpen(false)}
             className="hover:text-[var(--theme-color)] transition-colors"
           >

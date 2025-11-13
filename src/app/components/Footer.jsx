@@ -7,12 +7,12 @@ export default function Footer() {
           {/* Logo / About */}
           <div>
             <h3 className="text-xl font-semibold text-white mb-3">
-              Billing Morphology Academy
+              Morphology Healthcare Solution Pvt. Ltd.
             </h3>
             <p className="text-sm leading-relaxed text-gray-400">
-              Empowering students to build strong careers in hospital billing
-              and healthcare administration through practical learning and
-              expert guidance.
+              Empowering healthcare professionals and organizations with
+              structured billing, audit-ready governance, and ethical financial
+              solutions for a transparent healthcare ecosystem.
             </p>
           </div>
 
@@ -46,7 +46,7 @@ export default function Footer() {
           </div>
 
           {/* Support */}
-          <div>
+          {/* <div>
             <h4 className="text-lg font-semibold text-white mb-3">Support</h4>
             <ul className="space-y-2 text-sm">
               <li>
@@ -68,7 +68,7 @@ export default function Footer() {
                 </a>
               </li>
             </ul>
-          </div>
+          </div> */}
 
           {/* Contact */}
           <div>
@@ -88,13 +88,19 @@ export default function Footer() {
               <li>
                 Phone:{" "}
                 <a
-                  href="tel:+919876543210"
+                  href="tel:+919989211109"
                   className="hover:text-blue-400 transition"
                 >
-                  +91 98765 43210
+                  +91 99892 11109
                 </a>
               </li>
-              <li>Bhubaneswar, Odisha, India</li>
+              <li className="leading-relaxed">
+                3rd Floor, Rent A Desk - Infantry Road, <br />
+                4, Union Street, Infantry Rd, <br />
+                Area: Shivaji Nagar, Bengaluru, <br />
+                Karnataka, India – 560001 <br />
+                Landmark: Opp. Cauveri Central Emporium
+              </li>
             </ul>
           </div>
         </div>
@@ -104,14 +110,19 @@ export default function Footer() {
           <p className="text-sm text-gray-500">
             © {new Date().getFullYear()}{" "}
             <span className="text-gray-300 font-medium">
-              Billing Morphology Academy
-            </span>
-            . All rights reserved.
+              Morphology Healthcare Solution Pvt. Ltd.
+            </span>{" "}
+            | All rights reserved.
           </p>
           <p className="text-xs text-gray-600 mt-1">
             Designed & Developed by{" "}
-            <a href="https://applute.com" className="hover:text-blue-400">
-              Applute Technologies
+            <a
+              href="https://applute.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-blue-400"
+            >
+              Applute Technologies Pvt. Ltd.
             </a>
           </p>
         </div>
