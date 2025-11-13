@@ -141,26 +141,25 @@ export default function Testimonials() {
 
       {/* ✅ Mobile View - Horizontal Auto Scroll */}
       <div className="relative md:hidden">
-        {/* Arrows above slider */}
-        <div className="flex justify-between items-center mb-4 px-4">
-          <button
-            onClick={() => scroll("left")}
-            className="bg-white/80 backdrop-blur-md p-2 rounded-full shadow-md"
-          >
-            <ChevronLeft className="w-5 h-5 text-gray-700" />
-          </button>
-          <button
-            onClick={() => scroll("right")}
-            className="bg-white/80 backdrop-blur-md p-2 rounded-full shadow-md"
-          >
-            <ChevronRight className="w-5 h-5 text-gray-700" />
-          </button>
-        </div>
+        {/* Arrows positioned center left/right */}
+        <button
+          onClick={() => scroll("left")}
+          className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-md p-2 rounded-full shadow-md z-10"
+        >
+          <ChevronLeft className="w-5 h-5 text-gray-700" />
+        </button>
+        <button
+          onClick={() => scroll("right")}
+          className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-md p-2 rounded-full shadow-md z-10"
+        >
+          <ChevronRight className="w-5 h-5 text-gray-700" />
+        </button>
 
         {/* Scrollable Cards */}
         <div
           ref={scrollRef}
-          className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 px-2 no-scrollbar touch-pan-x"
+          className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 px-2 no-scrollbar"
+          style={{ touchAction: "pan-y pinch-zoom" }} // ✅ Allow vertical scroll
         >
           {testimonials.map((t) => (
             <motion.div
