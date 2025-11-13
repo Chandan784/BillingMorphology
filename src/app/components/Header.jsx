@@ -53,7 +53,7 @@ export default function Header() {
             Contact
           </Link>
           <Link
-            href="/login"
+            href="https://wa.me/919989211109"
             className="bg-[var(--theme-color)] text-white px-5 py-2 rounded-full hover:shadow-lg transition-all"
           >
             Join Now
@@ -129,7 +129,7 @@ export default function Header() {
                   Contact
                 </Link>
                 <Link
-                  href="/login"
+                  href="https://wa.me/919989211109"
                   onClick={toggleMenu}
                   className="bg-[var(--theme-color)] text-white px-6 py-3 rounded-xl text-center hover:shadow-lg transition"
                 >
@@ -139,7 +139,7 @@ export default function Header() {
 
               {/* Drawer Footer */}
               <div className="p-6 border-t text-sm text-gray-500 text-center">
-                © {new Date().getFullYear()} Applute Academy
+                © {new Date().getFullYear()} Billing Morphology Academy
               </div>
             </motion.div>
           </>

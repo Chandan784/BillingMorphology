@@ -57,7 +57,7 @@ export default function Hero() {
             className="px-6 py-3 rounded-full font-semibold text-white shadow-md transition-all duration-200"
             style={{ backgroundColor: "var(--theme-color)" }}
           >
-            Start Learning
+            <a href="/Course"> Start Learning</a>
           </motion.button>
 
           <motion.button
@@ -65,7 +65,7 @@ export default function Hero() {
             whileTap={{ scale: 0.95 }}
             className="px-6 py-3 rounded-full border border-gray-300 text-gray-700 hover:border-[#00b4d8] hover:text-[#00b4d8] transition-all duration-200"
           >
-            Talk to Advisor
+            <a href="https://wa.me/919989211109"> Talk to Advisor</a>
           </motion.button>
         </div>
       </motion.div>

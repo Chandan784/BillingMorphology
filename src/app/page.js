@@ -12,6 +12,8 @@ import CourseLevelsSection from "./components/CourseLevelSection";
 import AboutUsSection from "./components/TeamSection";
 import { Contact } from "lucide-react";
 import ContactUsSection from "./components/CotactusSection";
+import JobOpportunities from "./components/JobOppertunities";
+import TargetAudience from "./components/TargetAudience";
 
 export default function Home() {
   return (
@@ -34,6 +36,8 @@ export default function Home() {
 
         <CourseLevelsSection />
 
+        <JobOpportunities />
+        <TargetAudience />
         <AboutUsSection />
         <ContactUsSection />
       </main>
