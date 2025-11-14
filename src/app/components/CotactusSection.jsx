@@ -83,10 +83,10 @@ export default function ContactUsSection() {
             <div className="flex items-center space-x-3">
               <span className="text-[#31415d] text-2xl">📞</span>
               <a
-                href="tel:+919989211109"
+                href=""
                 className="text-gray-700 font-medium hover:text-[#49838c] transition"
               >
-                +91 99892 11109
+                +91 9989211109 , +91 8496973301
               </a>
             </div>
           </div>
