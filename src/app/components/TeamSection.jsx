@@ -21,6 +21,13 @@ export default function TeamSection() {
       short:
         "A visionary healthcare strategist and Ayurveda physician with 18+ years in hospital operations, healthcare management, and holistic medicine leadership.",
     },
+    {
+      name: "Dr. Pooja Gautam",
+      role: "Co-Founder & Strategic Advisor",
+      image: "/f3.jpg",
+      short:
+        "Dr. Pooja Gautam is an accomplished healthcare administrator with 11+ years of experience in hospital operations, clinical coordination, and quality-driven process improvement",
+    },
   ];
 
   return (
