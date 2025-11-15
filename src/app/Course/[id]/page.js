@@ -16,6 +16,7 @@ import {
   Star,
   Target,
 } from "lucide-react";
+import JobOpportunities from "@/app/components/JobOppertunities";
 
 export default function CourseDetail({ params }) {
   const { id } = use(params);
@@ -331,6 +332,7 @@ export default function CourseDetail({ params }) {
           Enroll Now
         </button>
       </motion.div>
+      <JobOpportunities />
     </div>
   );
 }
