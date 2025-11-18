@@ -75,12 +75,12 @@ export default function ContactPage() {
             {
               title: "Email Us",
               icon: "📧",
-              value: "info@billingmorpholog.com",
+              value: "info@billingmorphology.com",
             },
             {
               title: "Call Us",
               icon: "📞",
-              value: "+91 9989211109",
+              value: "  +91 7032498555, +91 8978375755, +91 9505414738",
             },
             {
               title: "Visit Us",

@@ -14,6 +14,7 @@ import { Contact } from "lucide-react";
 import ContactUsSection from "./components/CotactusSection";
 import JobOpportunities from "./components/JobOppertunities";
 import TargetAudience from "./components/TargetAudience";
+import Certificate from "./components/Certificate";
 
 export default function Home() {
   return (
@@ -38,6 +39,7 @@ export default function Home() {
 
         <JobOpportunities />
         <TargetAudience />
+        <Certificate />
         <AboutUsSection />
         <ContactUsSection />
       </main>

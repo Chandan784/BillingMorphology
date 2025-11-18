@@ -59,7 +59,7 @@ const aspirations = [
 
 const TargetAudience = () => {
   return (
-    <section className="py-16 px-6 md:px-12 bg-gradient-to-b from-background via-primary/5 to-background text-gray-900">
+    <section className="py-8 px-6 md:px-12 bg-gradient-to-b from-background via-primary/5 to-background text-gray-900">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}

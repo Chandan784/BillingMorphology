@@ -76,7 +76,7 @@ export default function ContactUsSection() {
                 href="mailto:info@billingmorphologyacademy.com"
                 className="text-gray-700 font-medium hover:text-[#49838c] transition"
               >
-                info@billingmorphologyacademy.com
+                info@billingmorphology.com
               </a>
             </div>
 
@@ -86,7 +86,7 @@ export default function ContactUsSection() {
                 href=""
                 className="text-gray-700 font-medium hover:text-[#49838c] transition"
               >
-                +91 9989211109 , +91 8496973301
+                +91 7032498555, +91 8978375755, +91 9505414738
               </a>
             </div>
           </div>
