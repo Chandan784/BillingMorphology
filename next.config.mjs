@@ -10,6 +10,7 @@ const nextConfig = {
       "th.bing.com",
       "tse3.mm.bing.net",
       "aaradhyahealthcare.co.in",
+      " plus.unsplash.com",
     ],
   },
 };

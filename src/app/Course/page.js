@@ -2,114 +2,110 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-
-const courses = [
-  {
-    id: 1,
-    title: "CBM Foundations: Hospital Billing Anatomy™",
-    level: "Level 1",
-    duration: "12 weeks",
-    summary: "Decode the complete hospital billing workflow.",
-  },
-  {
-    id: 2,
-    title: "CBM Claims & TPA Coordination™",
-    level: "Level 2",
-    duration: "12 weeks",
-    summary: "Master end-to-end claim and TPA coordination.",
-  },
-  {
-    id: 3,
-    title: "CBM Denial Management & RCM Analytics™",
-    level: "Level 3",
-    duration: "12 weeks",
-    summary: "Learn denial tracking, RCA, and KPI dashboards.",
-  },
-  {
-    id: 4,
-    title: "CBM Compliance, Audit & Controls™",
-    level: "Level 4",
-    duration: "12 weeks",
-    summary: "Implement SOPs and prepare audit-ready operations.",
-  },
-  {
-    id: 5,
-    title: "CBM Revenue Assurance & Strategy™",
-    level: "Level 5",
-    duration: "12 weeks",
-    summary: "Fix revenue leakage and align billing-finance strategy.",
-  },
-  {
-    id: 6,
-    title: "CBM Expert Practicum & Capstone™",
-    level: "Level 6",
-    duration: "12 weeks",
-    summary: "Lead RCM transformation and present dashboards.",
-  },
-];
+import { cbmCourses } from "../CourseData";
 
 export default function CoursesPage() {
+  const course = cbmCourses[0];
+
+  const totalLevels = course.levels.length;
+  const totalLessons = course.levels.reduce(
+    (sum, lvl) => sum + lvl.lessons.length,
+    0
+  );
+  const totalHours = course.levels.reduce(
+    (t, lvl) => t + parseInt(lvl.suggestedLearningHours),
+    0
+  );
+
+  const summary =
+    course.levels[0].lessons[0].description ||
+    "A complete 7-level transformation program for hospital billing & RCM mastery.";
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#f0f4f8] to-white">
-      {/* Animated Header */}
-      <section className="relative text-center py-20 px-6 md:px-16 overflow-hidden">
-        <div className="absolute top-0 left-0 w-72 h-72 bg-[#31415d] opacity-10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#49838c] opacity-10 rounded-full translate-x-1/3 translate-y-1/3"></div>
-
-        <motion.h1
-          initial={{ y: -40, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.7 }}
-          className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#31415d] to-[#49838c] z-10 relative"
+    <div className="min-h-screen bg-gradient-to-b from-[#eef2f7] to-white py-16">
+      <section className="max-w-6xl mx-auto px-6 md:px-14">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="bg-white rounded-3xl shadow-xl hover:shadow-2xl border border-gray-100 
+                     overflow-hidden grid grid-cols-1 lg:grid-cols-2 transition-all duration-300"
         >
-          Courses & Levels
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.7 }}
-          className="text-gray-700 mt-4 text-lg max-w-2xl mx-auto z-10 relative"
-        >
-          A 6-level structured pathway to becoming a{" "}
-          <span className="font-semibold text-[#31415d]">
-            Certified Billing Morphologist™
-          </span>
-          . Learn progressively from foundations to leadership.
-        </motion.p>
-      </section>
+          {/* LEFT – IMAGE */}
+          <div className="relative h-64 lg:h-auto">
+            <img
+              src={
+                course.image ||
+                "https://plus.unsplash.com/premium_photo-1661410991860-4cd86e2613e7?w=600&auto=format&fit=crop&q=60"
+              }
+              alt={course.courseTitle}
+              className="w-full h-full object-cover lg:rounded-l-3xl"
+            />
+          </div>
 
-      {/* Course Cards */}
-      <section className="max-w-7xl mx-auto px-6 md:px-16 pb-20 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {courses.map((course, index) => (
-          <motion.div
-            key={course.id}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1, duration: 0.5 }}
-            viewport={{ once: true }}
-            className="bg-white rounded-2xl shadow-lg hover:shadow-xl border border-gray-100 p-6 flex flex-col justify-between group transition duration-300"
-          >
+          {/* RIGHT – DETAILS */}
+          <div className="p-8 lg:p-12 flex flex-col justify-between">
             <div>
-              <h2 className="text-sm font-semibold uppercase text-[#49838c] mb-2 tracking-wide">
-                {course.level}
-              </h2>
-              <h3 className="text-lg font-bold text-[#31415d] group-hover:text-[#49838c] transition mb-3">
-                {course.title}
+              <h3 className="text-2xl font-bold text-[#31415d] mb-3 leading-tight">
+                {course.courseTitle}
               </h3>
-              <p className="text-gray-600 text-sm mb-4">{course.summary}</p>
-              <p className="text-gray-500 text-xs">
-                ⏱ Duration: {course.duration}
+
+              <p className="text-gray-600 text-sm md:text-base mb-5">
+                {summary}
               </p>
+
+              {/* Stats */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-y-4 text-sm">
+                <div>
+                  <p className="font-semibold text-gray-700">📘 Levels</p>
+                  <p className="text-[#49838c] font-bold">{totalLevels}</p>
+                </div>
+
+                <div>
+                  <p className="font-semibold text-gray-700">📚 Lessons</p>
+                  <p className="text-[#49838c] font-bold">{totalLessons}</p>
+                </div>
+
+                <div>
+                  <p className="font-semibold text-gray-700">⏱ Total Hours</p>
+                  <p className="text-[#49838c] font-bold">{totalHours}</p>
+                </div>
+
+                <div>
+                  <p className="font-semibold text-gray-700">⭐ Rating</p>
+                  <p className="font-bold text-yellow-500">4.9 / 5</p>
+                </div>
+
+                <div>
+                  <p className="font-semibold text-gray-700">💰 Price</p>
+                  <p className="text-green-600 font-bold">₹14,999</p>
+                </div>
+              </div>
             </div>
 
-            <Link
-              href={`/Course/${course.id}`}
-              className="mt-6 inline-block text-center bg-[#31415d] text-white py-2.5 rounded-xl font-semibold hover:bg-[#49838c] transition-all duration-300"
-            >
-              View Details
-            </Link>
-          </motion.div>
-        ))}
+            {/* BUTTONS */}
+            <div className="mt-8 flex flex-col md:flex-row gap-4">
+              <Link
+                href={`/Course/${course.id}`}
+                className="w-full text-center bg-[#31415d] text-white py-3 rounded-xl
+                           font-semibold hover:bg-[#3f557a] transition-all duration-300"
+              >
+                View Course Details
+              </Link>
+
+              <a
+                href="/cbm-syllabus.pdf"
+                download
+                className="w-full text-center border border-[#31415d] text-[#31415d] py-3 
+                           rounded-xl font-semibold hover:bg-[#31415d] hover:text-white 
+                           transition-all duration-300"
+              >
+                Download Syllabus
+              </a>
+            </div>
+          </div>
+        </motion.div>
       </section>
     </div>
   );
