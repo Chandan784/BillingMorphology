@@ -55,13 +55,20 @@ export default function CourseHeader({
           </p>
 
           {/* CTA Buttons */}
-          <button className="w-full bg-[#49838c] text-white py-3 rounded-xl text-lg font-semibold hover:bg-[#3b6a70] transition">
+          <button
+            onClick={() =>
+              window.open(
+                "https://wa.me/917032498555?text=Hi%20I%20want%20to%20enroll%20in%20this%20course",
+                "_blank"
+              )
+            }
+            className="w-full bg-[#49838c] text-white py-3 rounded-xl text-lg font-semibold hover:bg-[#3b6a70] transition"
+          >
             Enroll Now
           </button>
-
-          <button className="w-full mt-3 border border-[#31415d] text-[#31415d] py-3 rounded-xl text-lg font-semibold hover:bg-[#e6e9ef] transition">
+          {/* <button className="w-full mt-3 border border-[#31415d] text-[#31415d] py-3 rounded-xl text-lg font-semibold hover:bg-[#e6e9ef] transition">
             Download Syllabus
-          </button>
+          </button> */}
         </div>
       </div>
     </section>
