@@ -58,7 +58,9 @@ export default function CourseHeader({
           <button
             onClick={() =>
               window.open(
-                "https://wa.me/917032498555?text=Hi%20I%20want%20to%20enroll%20in%20this%20course",
+                `https://wa.me/917032498555?text=Hi%20I%20want%20to%20enroll%20in%20the%20course%20${encodeURIComponent(
+                  title
+                )}`,
                 "_blank"
               )
             }
