@@ -4,7 +4,7 @@ import React from "react";
 import { CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
 
-export default function WhoIsThisCourseFor() {
+export default function WhoIsThisCourseFor({ course }) {
   const points = [
     "Freshers & graduates starting a career in hospital billing",
     "Billing executives with 0–3 years of experience",
@@ -77,9 +77,17 @@ export default function WhoIsThisCourseFor() {
           viewport={{ once: true }}
         >
           <button
+            onClick={() =>
+              window.open(
+                `https://wa.me/919876543210?text=${encodeURIComponent(
+                  `Hello! I want to enroll in the course: "${course.courseTitle}". Please provide details.`
+                )}`,
+                "_blank"
+              )
+            }
             className="bg-[#31576d] text-white py-2.5 md:py-3 px-10 rounded-xl 
-                       text-sm md:text-base font-semibold shadow-md 
-                       hover:bg-[#274255] transition"
+             text-sm md:text-base font-semibold shadow-md 
+             hover:bg-[#274255] transition"
           >
             Enroll Now
           </button>

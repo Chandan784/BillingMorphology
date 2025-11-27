@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Award, ShieldCheck, Users } from "lucide-react";
 
-function Certificate() {
+function Certificate({ course }) {
   return (
     <section className="bg-gradient-to-b from-[#f8fafc] to-white py-20 px-6 md:px-12">
       <div className="max-w-6xl mx-auto">
@@ -104,6 +104,30 @@ function Certificate() {
           </motion.div>
         </div>
       </div>
+
+      <motion.div
+        className="flex justify-center mt-14"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        <button
+          onClick={() =>
+            window.open(
+              `https://wa.me/919876543210?text=${encodeURIComponent(
+                `Hello! I want to enroll in the course: "${course.courseTitle}". Please provide details.`
+              )}`,
+              "_blank"
+            )
+          }
+          className="bg-[#31576d] text-white py-2.5 md:py-3 px-10 rounded-xl 
+                   text-sm md:text-base font-semibold shadow-md 
+                   hover:bg-[#274255] transition"
+        >
+          Enroll Now
+        </button>
+      </motion.div>
     </section>
   );
 }

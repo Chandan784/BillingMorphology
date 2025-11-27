@@ -41,11 +41,11 @@ export default function CourseDetails() {
       </div>
 
       {/* OTHER SECTIONS */}
-      <WhoIsThisCourseFor />
-      <FAQ />
-      <Benefits />
+      <WhoIsThisCourseFor course={course} />
+      <FAQ course={course} />
+      <Benefits course={course} />
       <CourseDetailsTestimonials />
-      <Certificate />
+      <Certificate course={course} />
     </div>
   );
 }

@@ -32,7 +32,7 @@
 /* Dark Mode */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #eb2c25;
+    --background: #ffffff;
     --foreground: #ededed;
     --theme-color: #49838c; /* slightly lighter in dark mode */
   }
@@ -70,7 +70,7 @@ body {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #eb2c25;
+    --background: #ffffff;
     --foreground: #ededed;
   }
 }

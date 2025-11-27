@@ -1,130 +1,115 @@
-import { Clock, GraduationCap, Target } from "lucide-react";
+"use client";
+
+import { useRef } from "react";
+import Link from "next/link";
+import { cbmCourses } from "../CourseData";
+import CourseCard from "./CourseCard";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function CourseLevelsSection() {
-  const courses = [
-    {
-      image:
-        "https://plus.unsplash.com/premium_photo-1661761151437-a5f7fbe5753b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8SG9zcGl0YWwlMjBCaWxsaW5nJTIwdHJhaW5pbmd8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=500",
-      level: "CBM Level 1 — Hospital Billing Foundations™",
-      who: "Freshers, graduates, and billing executives (0–2 years)",
-      duration: "12 Weeks | Hybrid (Recorded + Live Doubt Clinics)",
-      learn: [
-        "Decode the complete billing workflow — from registration to discharge.",
-        "Prepare accurate estimates and manage cashless files.",
-        "Eliminate data entry and documentation errors.",
-      ],
-      modules:
-        "Patient onboarding · Charge capture · Coding basics · TPA coordination · Discharge billing · Final bill QA · Basic compliance",
-      outcome:
-        "CBM Level 1 Certificate — Ready for Hospital Billing Executive roles",
-    },
-    {
-      image:
-        "https://media.istockphoto.com/id/1633930220/photo/tablet-doctor-hands-and-people-for-healthcare-information-test-results-and-support-or-helping.webp?a=1&b=1&s=612x612&w=0&k=20&c=FKB106xRuxWfNyJx9p3q4gHLnllLHOLtMv8ia7SidU4=",
-      level: "CBM Level 2 — Claims & TPA Coordination™",
-      who: "Billing and TPA professionals (1–3 years experience)",
-      duration: "12 Weeks | Hybrid (Recorded + Live Doubt Clinics)",
-      learn: [
-        "Drive pre-auth to discharge approvals with confidence.",
-        "Standardize communication to reduce pendency.",
-        "Cut turnaround time (TAT) through better handoffs and coordination.",
-      ],
-      modules:
-        "Pre-auth · Claim documentation · Query handling · Insurer SLAs · Discharge TAT · Communication protocols",
-      outcome:
-        "CBM Level 2 Certificate — TPA Coordinator / Claims Processor readiness",
-    },
-    {
-      image:
-        "https://images.unsplash.com/photo-1745420052490-285dbfa1cf4d?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzZ8fEhvc3BpdGFsJTIwQmlsbGluZyUyMHRyYWluaW5nfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=500",
-      level: "CBM Level 3 — Denial Management & RCM Analytics™",
-      who: "RCM analysts, senior billing executives (2–5 years)",
-      duration: "12 Weeks | Hybrid (Recorded + Live Doubt Clinics)",
-      learn: [
-        "Identify and prevent denials with structured root-cause analysis (RCA).",
-        "Track A/R aging, recovery, and KPI dashboards.",
-        "Collaborate with finance, coding, and clinical teams using data-driven insights.",
-      ],
-      modules:
-        "Denial taxonomy · RCA workflows · A/R management · Dashboards · Cross-functional analytics",
-      outcome:
-        "CBM Level 3 Certificate — RCM Analyst / Denial Specialist readiness",
-    },
-  ];
+  const scrollRef = useRef(null);
+
+  const scrollLeft = () => {
+    scrollRef.current.scrollBy({ left: -300, behavior: "smooth" });
+  };
+
+  const scrollRight = () => {
+    scrollRef.current.scrollBy({ left: 300, behavior: "smooth" });
+  };
 
   return (
-    <section className="bg-white py-20 px-6 md:px-16">
-      <div className="max-w-6xl mx-auto text-center">
-        {/* Section Heading */}
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-          Master Every Stage of Hospital Billing — From Foundations to RCM
-          Expertise
-        </h2>
-        <p className="mt-4 text-gray-600 max-w-3xl mx-auto text-lg">
-          Structured, practical training that turns fresh graduates and
-          executives into hospital billing and revenue operations professionals.
-        </p>
+    <section className="bg-white py-20 lg:px-6 md:px-16">
+      <div className="w-full mx-auto relative">
+        {/* Heading */}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+            Master Every Stage of Hospital Billing
+          </h2>
+          <p className="mt-4 text-gray-600 max-w-3xl mx-auto text-lg">
+            Explore Billing, Claims, Denial Management & RCM Analytics across
+            all CBM courses
+          </p>
+        </div>
 
-        {/* Course Cards */}
-        <div className="grid md:grid-cols-3 gap-10 mt-16">
-          {courses.map((course, i) => (
-            <div
-              key={i}
-              className="bg-[#f9fafb] rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all transform hover:-translate-y-2"
+        {/* Arrow Buttons */}
+        <button
+          onClick={scrollLeft}
+          className="flex absolute left-2 top-[48%] -translate-y-1/2 z-20 bg-white shadow-lg rounded-full p-2 hover:bg-gray-100 active:scale-95 transition"
+        >
+          <ChevronLeft size={22} />
+        </button>
+
+        <button
+          onClick={scrollRight}
+          className="flex absolute right-2 top-[48%] -translate-y-1/2 z-20 bg-white shadow-lg rounded-full p-2 hover:bg-gray-100 active:scale-95 transition"
+        >
+          <ChevronRight size={22} />
+        </button>
+
+        {/* Horizontal Scroll */}
+        <div className="relative">
+          <div
+            ref={scrollRef}
+            className="flex gap-2 md:gap-3 lg:gap-5 overflow-x-auto py-4 scroll-smooth"
+            style={{
+              scrollbarWidth: "none", // Firefox
+            }}
+          >
+            {/* Hide scrollbar for Webkit browsers */}
+
+            {/* VIEW ALL — Hidden on MOBILE */}
+            <Link
+              href="/Course"
+              className="flex-shrink-0 hidden lg:block w-[340px]"
             >
-              <img
-                src={course.image}
-                alt={course.level}
-                className="w-full h-56 object-cover"
-              />
-              <div className="p-8 text-left">
-                {/* Use global theme color */}
-                <h3 className="text-xl font-semibold mb-2 text-theme">
-                  {course.level}
+              <div
+                className="
+                bg-[#31415d]
+                hover:bg-[#3f557a]
+                transition-all
+                duration-300
+                text-white
+                rounded-2xl
+                p-6
+                h-full
+                flex
+                flex-col
+                justify-center
+                border
+                border-[#3f557a]/40
+                shadow-[0_10px_30px_rgba(0,0,0,0.4)]
+                hover:shadow-[0_15px_40px_rgba(0,0,0,0.55)]
+                backdrop-blur-xl
+                relative
+                overflow-hidden
+              "
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none"></div>
+                <div className="absolute -top-10 -right-10 w-28 h-28 bg-white/10 rounded-full blur-2xl"></div>
+
+                <h3 className="text-lg font-bold tracking-wide">
+                  Explore All Courses
                 </h3>
-
-                <div className="space-y-2 text-gray-600 text-sm mb-4">
-                  <p className="flex items-center gap-2">
-                    <GraduationCap className="w-4 h-4 text-gray-500" />{" "}
-                    <span>
-                      <strong>Who it’s for:</strong> {course.who}
-                    </span>
-                  </p>
-                  <p className="flex items-center gap-2">
-                    <Clock className="w-4 h-4 text-gray-500" />{" "}
-                    <span>
-                      <strong>Duration:</strong> {course.duration}
-                    </span>
-                  </p>
-                </div>
-
-                <div className="text-gray-700 mb-3">
-                  <strong>You’ll Learn To:</strong>
-                  <ul className="list-disc pl-5 mt-1 space-y-1 text-gray-600 text-sm">
-                    {course.learn.map((item, idx) => (
-                      <li key={idx}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-
-                <p className="text-sm text-gray-700 mb-2">
-                  <strong>Key Modules:</strong> {course.modules}
+                <p className="text-sm text-gray-200 mt-2 leading-relaxed">
+                  Unlock the full CBM program library and upskill across every
+                  level.
                 </p>
-
-                <p className="flex items-center gap-2 text-sm text-gray-700">
-                  <Target className="w-4 h-4 text-gray-500" />{" "}
-                  <span>
-                    <strong>Outcome:</strong> {course.outcome}
-                  </span>
-                </p>
-
-                {/* Use global theme button */}
-                <button className="btn-primary mt-6 px-5 py-2 rounded-full text-sm font-medium">
-                  Know More →
+                <button className="mt-6 py-2.5 px-5 rounded-xl text-sm font-semibold bg-white text-[#31415d] hover:bg-gray-100 transition-all shadow">
+                  View All →
                 </button>
               </div>
-            </div>
-          ))}
+            </Link>
+
+            {/* CBM Courses */}
+            {cbmCourses.map((course) => (
+              <div
+                key={course.id}
+                className="flex-shrink-0 w-[280px] sm:w-[260px] lg:w-[340px]"
+              >
+                <CourseCard course={course} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

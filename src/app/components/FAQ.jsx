@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
-
-export default function FAQ() {
+import { motion } from "framer-motion";
+export default function FAQ({ course }) {
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggleFAQ = (index) => {
@@ -117,6 +117,30 @@ export default function FAQ() {
           </div>
         ))}
       </div>
+
+      <motion.div
+        className="flex justify-center mt-14"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        <button
+          onClick={() =>
+            window.open(
+              `https://wa.me/919876543210?text=${encodeURIComponent(
+                `Hello! I want to enroll in the course: "${course.courseTitle}". Please provide details.`
+              )}`,
+              "_blank"
+            )
+          }
+          className="bg-[#31576d] text-white py-2.5 md:py-3 px-10 rounded-xl 
+             text-sm md:text-base font-semibold shadow-md 
+             hover:bg-[#274255] transition"
+        >
+          Enroll Now
+        </button>
+      </motion.div>
     </div>
   );
 }
