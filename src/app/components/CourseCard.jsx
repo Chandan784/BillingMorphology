@@ -66,9 +66,35 @@ export default function CourseCard({ course }) {
         </div>
 
         {/* PRICE */}
-        <p className="mt-4 text-[15px] md:text-[16px] font-bold text-green-600">
-          ₹{course.price} + GST
-        </p>
+        <div className="mt-4">
+          {/* Calculate Discount */}
+          {(() => {
+            const discountPercent = Math.round(
+              ((course.price - course.introPrice) / course.price) * 100
+            );
+
+            return (
+              <>
+                <div className="flex items-center gap-3">
+                  {/* MRP Price */}
+                  <p className="text-[13px] md:text-[14px] text-gray-500 line-through">
+                    ₹{course.price}
+                  </p>
+
+                  {/* Discount */}
+                  <span className="text-[12px] md:text-[13px] bg-red-100 text-red-600 px-2 py-0.5 rounded-lg font-semibold">
+                    {discountPercent}% OFF
+                  </span>
+                </div>
+
+                {/* Final Price */}
+                <p className="text-[16px] md:text-[18px] font-bold text-green-600 mt-1">
+                  ₹{course.introPrice} + GST
+                </p>
+              </>
+            );
+          })()}
+        </div>
 
         {/* BUTTON */}
         <Link href={`/Course/${course.id}`}>

@@ -1,13 +1,17 @@
 "use client";
 import React from "react";
-import { Star } from "lucide-react";
+import { Star, CheckCircle } from "lucide-react";
 
 export default function CourseHeader({
   title,
   totalLevels,
   totalLessons,
-  price,
+  price, // MRP
+  introPrice, // Discounted Price
 }) {
+  // Dynamic discount calculation
+  const discountPercent = Math.round(((price - introPrice) / price) * 100);
+
   return (
     <section className="w-full bg-[#31415d] text-white py-16 px-6 lg:px-24 shadow-lg relative">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:items-start gap-10">
@@ -28,11 +32,35 @@ export default function CourseHeader({
             <span className="ml-2 text-sm opacity-90">4.9 (2,854 Reviews)</span>
           </div>
 
+          {/* Short description */}
           <p className="text-md opacity-90 mt-4 max-w-xl">
             Explore a structured, multi-level learning journey designed to take
             you from foundations to advanced mastery in healthcare revenue and
             billing.
           </p>
+
+          {/* 🔥 NEW LINE 1 — Program Highlight with Tick */}
+          <div className="flex items-start gap-2 mt-4 max-w-xl">
+            <CheckCircle className="text-green-400 w-5 h-5 mt-1" />
+            <p className="text-md font-semibold opacity-95">
+              The only program designed for absolute beginners to master
+              end-to-end hospital billing — from registration workflows to
+              insurance fundamentals.
+            </p>
+          </div>
+
+          {/* 🔥 NEW LINE 2 — Trusted Partners with Tick */}
+          <div className="flex items-start gap-2 mt-3 max-w-xl">
+            <CheckCircle className="text-green-400 w-5 h-5 mt-1" />
+            <p className="text-sm opacity-90">
+              Preferred and trusted by leading healthcare partners such as
+              <span className="font-semibold">
+                {" "}
+                ClaimBuddy, Careline, Medfine, Aradhya Hospital
+              </span>{" "}
+              and many others.
+            </p>
+          </div>
         </div>
 
         {/* RIGHT — SIDEBAR SUMMARY CARD */}
@@ -49,12 +77,29 @@ export default function CourseHeader({
             <strong>Total Lessons:</strong> {totalLessons}
           </p>
 
-          <p className="mb-6 text-lg">
-            <strong>Price:</strong>{" "}
-            <span className="text-[#49838c] font-bold">₹{price}</span>
-          </p>
+          {/* PRICE SECTION */}
+          <div className="mb-6">
+            {/* MRP + Discount */}
+            <div className="flex items-center gap-3">
+              <p className="text-gray-500 line-through text-[15px]">₹{price}</p>
 
-          {/* CTA Buttons */}
+              <span className="text-[13px] bg-red-100 text-red-600 px-2 py-0.5 rounded-lg font-semibold">
+                {discountPercent}% OFF
+              </span>
+            </div>
+
+            {/* Final Intro Price */}
+            <p className="mt-1 text-xl font-bold text-green-600">
+              ₹{introPrice} + GST
+            </p>
+
+            {/* 🔥 Limited period offer line */}
+            <p className="mt-2 text-[13px] text-red-600 font-semibold bg-red-50 px-2 py-1 rounded-md inline-block">
+              Hurry up! Offer valid till December 24
+            </p>
+          </div>
+
+          {/* CTA Button */}
           <button
             onClick={() =>
               window.open(
@@ -68,9 +113,6 @@ export default function CourseHeader({
           >
             Enroll Now
           </button>
-          {/* <button className="w-full mt-3 border border-[#31415d] text-[#31415d] py-3 rounded-xl text-lg font-semibold hover:bg-[#e6e9ef] transition">
-            Download Syllabus
-          </button> */}
         </div>
       </div>
     </section>

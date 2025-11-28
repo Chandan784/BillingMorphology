@@ -33,6 +33,7 @@ export default function CourseDetails() {
         totalLevels={totalLevels}
         totalLessons={totalLessons}
         price={course.price || 12000}
+        introPrice={course.introPrice || 12000}
       />
 
       {/* MAIN CONTENT */}

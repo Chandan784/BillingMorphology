@@ -3,6 +3,7 @@ export const cbmCourses = [
     id: "cbm7",
     courseTitle: "Certified Billing Morphologist (CBM – 7 Levels)",
     price: 29999,
+    introPrice: 6599,
     levels: [
       {
         level: 1,
@@ -316,6 +317,7 @@ export const cbmCourses = [
     id: "chis7",
     courseTitle: "Certified Health Insurance Specialist (CHIS – 7 Levels)",
     price: 38999,
+    introPrice: 6599,
     levels: [
       {
         level: 1,
@@ -594,6 +596,7 @@ export const cbmCourses = [
     courseTitle:
       "Certified Healthcare Billing Support Executive (CHBSE – 2 Levels)",
     price: 15999,
+    introPrice: 5999,
     levels: [
       {
         level: 1,
@@ -722,6 +725,7 @@ export const cbmCourses = [
     id: "hhs3",
     courseTitle: "Certified Healthcare Hospitality Specialist (HHS – 3 Levels)",
     price: 18599,
+    introPrice: 5599,
     levels: [
       // LEVEL 1 -----------------------------------------
       {
@@ -877,7 +881,7 @@ export const cbmCourses = [
   {
     id: "ccc-cs",
     courseTitle: "Certified Clinical Claims & Cashless Specialist (CCC-CS)",
-
+    introPrice: 7599,
     totalLevels: 6,
     price: 39999,
     rating: 4.9,
@@ -1173,7 +1177,7 @@ export const cbmCourses = [
   {
     id: "chsa",
     courseTitle: "Certified Healthcare Service Associate (CHSA)",
-
+    introPrice: 4599,
     totalLevels: 1,
     price: 8999,
     rating: 4.8,
