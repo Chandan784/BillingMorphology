@@ -24,6 +24,11 @@ export default function CoursesPage() {
             course.levels[0]?.lessons[0]?.description ||
             "A professional healthcare certification program.";
 
+          // ⭐ DISCOUNT CALCULATION
+          const discountPercent = Math.round(
+            ((course.price - course.introPrice) / course.price) * 100
+          );
+
           return (
             <motion.div
               key={course.id}
@@ -57,7 +62,7 @@ export default function CoursesPage() {
                     {summary}
                   </p>
 
-                  {/* Stats */}
+                  {/* STATS */}
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-y-4 text-sm">
                     <div>
                       <p className="font-semibold text-gray-700">📘 Levels</p>
@@ -81,11 +86,22 @@ export default function CoursesPage() {
                       <p className="font-bold text-yellow-500">4.9 / 5</p>
                     </div>
 
-                    <div>
-                      <p className="font-semibold text-gray-700">💰 Price</p>
-                      <p className="text-green-600 font-bold">
-                        {course.price} + GST
-                      </p>
+                    {/* ⭐ PRICE BOX */}
+                    <div className="col-span-2 sm:col-span-3 mt-2">
+                      <div className="bg-[#f7fafc] border border-gray-200 p-4 rounded-xl">
+                        <div className="flex items-center gap-3">
+                          <p className="text-gray-500 line-through text-[14px]">
+                            ₹{course.price}
+                          </p>
+                          <span className="text-[13px] bg-red-100 text-red-600 px-2 py-0.5 rounded-lg font-semibold">
+                            {discountPercent}% OFF
+                          </span>
+                        </div>
+
+                        <p className="mt-1 text-xl font-bold text-green-600">
+                          ₹{course.introPrice} + GST
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -99,16 +115,6 @@ export default function CoursesPage() {
                   >
                     View Course Details
                   </Link>
-                  {/* 
-                  <a
-                    href={course.syllabusPdf || "/cbm-syllabus.pdf"}
-                    download
-                    className="w-full text-center border border-[#31415d] text-[#31415d] py-3 
-                               rounded-xl font-semibold hover:bg-[#31415d] hover:text-white 
-                               transition-all duration-300"
-                  >
-                    Download Syllabus
-                  </a> */}
                 </div>
               </div>
             </motion.div>
