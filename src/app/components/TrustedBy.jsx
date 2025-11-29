@@ -40,7 +40,7 @@ export default function TrustedBy() {
         </p>
 
         {/* LOGO + TITLE CARDS */}
-        <div className="flex flex-wrap justify-center gap-8 sm:gap-10">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-10 place-items-center">
           {companies.map((item, index) => (
             <motion.div
               key={item.name}
