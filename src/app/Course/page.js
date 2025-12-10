@@ -3,8 +3,18 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { cbmCourses } from "../CourseData";
-
+import { AppluteAuth } from "appluteauth";
 export default function CoursesPage() {
+  let auth = new AppluteAuth({
+    dbUrl:
+      "mongodb+srv://chandansamantaray784:8TSC0mRSNNY5KJU6@cluster0.b3c32xr.mongodb.net/",
+    emailUser: "chandansamantaray784@gmail.com",
+    emailPass: "qerf-bgrn-wjdc-sjoi",
+    jwtSecret: "MY_SECRET_KEY",
+  });
+
+  auth.sendOTP("chandansamantaray784@gmail.com");
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#eef2f7] to-white py-16">
       <section className="max-w-6xl mx-auto px-6 md:px-14 space-y-12">
