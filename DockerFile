@@ -1,10 +1,9 @@
-# Stage 1: Build Next.js app
-FROM node:20-alpine AS builder
+FROM node:20-alpine
 
 # Set working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json
+# Copy package files
 COPY package*.json ./
 
 # Install dependencies
@@ -13,22 +12,8 @@ RUN npm install
 # Copy all source files
 COPY . .
 
-# Build Next.js production app
-RUN npm run build
-
-# Stage 2: Production image
-FROM node:20-alpine
-
-WORKDIR /app
-
-# Copy built app and node_modules from builder
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/public ./public
-COPY package*.json ./
-
-# Expose port 3000 (NGINX will proxy to this)
+# Expose port 3000
 EXPOSE 3000
 
-# Run the Next.js app
-CMD ["npm", "start"]
+# Build and start Next.js app when container runs
+CMD npm run build && npm start

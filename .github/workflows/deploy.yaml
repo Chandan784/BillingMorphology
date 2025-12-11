@@ -6,53 +6,35 @@ on:
       - main
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout repo
+      # 1. Checkout code (optional, just for record)
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # 2. Build Docker image (build happens on GitHub Actions runner)
-      - name: Build Docker image
-        run: docker build -t billing-morphology-academy:latest  BillingMorphology/Dockerfile BillingMorphology/
-
-      # 3. Save Docker image to tar file
-      - name: Save Docker image
-        run: docker save billing-morphology-academy:latest -o billing-morphology-academy.tar
-
-      # 4. Copy Docker image tar to VPS
-      - name: Copy image to VPS
-        uses: appleboy/scp-action@master
+      # 2. SSH into VPS and deploy
+      - name: Deploy Frontend to VPS
+        uses: webfactory/ssh-agent@v0.9.0
         with:
-          host: 82.29.161.242
-          username: root
-          key: ${{ secrets.VPS_SSH_KEY }}
-          source: billing-morphology-academy.tar
-          target: /root/
-
-      # 5. Pull latest code, load Docker image, and run container on VPS
-      - name: Deploy on VPS
-        uses: appleboy/ssh-action@v0.1.7
-        with:
-          host: 82.29.161.242
-          username: root
-          key: ${{ secrets.VPS_SSH_KEY }}
-          script: |
-            echo "📂 Pulling latest code on VPS..."
+          ssh-private-key: ${{ secrets.VPS_SSH_KEY }}
+        run: |
+          ssh -o StrictHostKeyChecking=no root@82.29.161.242 << 'EOF'
+            echo "📂 Pulling latest frontend code..."
             cd ~/BillingMorphology
             git reset --hard
             git pull origin main
+
+            echo "🏗️ Building new Docker image..."
+            docker build -t billing-morphology-academy:latest .
 
             echo "🛑 Stopping old container..."
             docker stop billing-frontend || true
             docker rm billing-frontend || true
 
-            echo "📦 Loading new Docker image..."
-            docker load -i /root/billing-morphology-academy.tar
-
             echo "🚀 Starting new container..."
             docker run -d --name billing-frontend -p 3000:3000 billing-morphology-academy:latest
 
-            echo "✅ Frontend deployed successfully!"
+            echo "✅ Deployment complete! Frontend running on port 3000."
+          EOF
