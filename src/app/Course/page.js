@@ -50,7 +50,7 @@ export default function CoursesPage() {
                   className="w-full h-full object-cover lg:rounded-l-3xl"
                 />
               </div>
-
+            
               {/* RIGHT – DETAILS */}
               <div className="p-8 lg:p-12 flex flex-col justify-between">
                 <div>
