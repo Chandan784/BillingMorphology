@@ -10,14 +10,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      # 1. Checkout repo
+      - name: Checkout code
+        uses: actions/checkout@v3
 
+      # 2. Build Docker image (build happens on GitHub Actions runner)
       - name: Build Docker image
-        run: docker build -t billing-morphology-academy:latest .
+        run: docker build -t billing-morphology-academy:latest -f BillingMorphology/Dockerfile BillingMorphology/
 
-      - name: Save Docker image to tar
+      # 3. Save Docker image to tar file
+      - name: Save Docker image
         run: docker save billing-morphology-academy:latest -o billing-morphology-academy.tar
 
+      # 4. Copy Docker image tar to VPS
       - name: Copy image to VPS
         uses: appleboy/scp-action@master
         with:
@@ -27,14 +32,27 @@ jobs:
           source: billing-morphology-academy.tar
           target: /root/
 
-      - name: Load and run Docker on VPS
+      # 5. Pull latest code, load Docker image, and run container on VPS
+      - name: Deploy on VPS
         uses: appleboy/ssh-action@v0.1.7
         with:
           host: 82.29.161.242
           username: root
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
-            docker load -i /root/billing-morphology-academy.tar
+            echo "📂 Pulling latest code on VPS..."
+            cd ~/BillingMorphology
+            git reset --hard
+            git pull origin main
+
+            echo "🛑 Stopping old container..."
             docker stop billing-frontend || true
             docker rm billing-frontend || true
+
+            echo "📦 Loading new Docker image..."
+            docker load -i /root/billing-morphology-academy.tar
+
+            echo "🚀 Starting new container..."
             docker run -d --name billing-frontend -p 3000:3000 billing-morphology-academy:latest
+
+            echo "✅ Frontend deployed successfully!"
