@@ -16,7 +16,7 @@ jobs:
 
       # 2. Build Docker image (build happens on GitHub Actions runner)
       - name: Build Docker image
-        run: docker build -t billing-morphology-academy:latest -f BillingMorphology/Dockerfile BillingMorphology/
+        run: docker build -t billing-morphology-academy:latest  BillingMorphology/Dockerfile BillingMorphology/
 
       # 3. Save Docker image to tar file
       - name: Save Docker image
