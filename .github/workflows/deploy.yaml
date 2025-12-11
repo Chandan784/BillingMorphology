@@ -3,42 +3,38 @@ name: CI/CD Frontend - BillingMorphologyAcademy
 on:
   push:
     branches:
-      - main # Trigger when code is pushed to main branch
+      - main
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@v0.9.0
+      - name: Build Docker image
+        run: docker build -t billing-morphology-academy:latest .
+
+      - name: Save Docker image to tar
+        run: docker save billing-morphology-academy:latest -o billing-morphology-academy.tar
+
+      - name: Copy image to VPS
+        uses: appleboy/scp-action@master
         with:
-          ssh-private-key: ${{ secrets.VPS_SSH_KEY }}
+          host: 82.29.161.242
+          username: root
+          key: ${{ secrets.VPS_SSH_KEY }}
+          source: billing-morphology-academy.tar
+          target: /root/
 
-      - name: Deploy Frontend to VPS Server
-        run: |
-          ssh -o StrictHostKeyChecking=no root@82.29.161.242 << 'EOF'
-            echo "🔄 Pulling latest frontend code..."
-            cd ~/BillingMorphology
-            git pull origin main
-
-            echo "🏗️ Building new Docker image..."
-            docker build -t billing-morphology-academy:latest .
-            
-            echo "🧹 Stopping and removing old container..."
+      - name: Load and run Docker on VPS
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: 82.29.161.242
+          username: root
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script: |
+            docker load -i /root/billing-morphology-academy.tar
             docker stop billing-frontend || true
             docker rm billing-frontend || true
-
-
-
-            echo "🚀 Starting new container..."
-            docker run -d \
-              --name billing-frontend \
-              -p 3000:3000 \
-              billing-morphology-academy:latest
-
-            echo "✅ Deployment complete! Frontend running on port 3000."
-          EOF
+            docker run -d --name billing-frontend -p 3000:3000 billing-morphology-academy:latest
