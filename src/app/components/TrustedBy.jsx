@@ -10,7 +10,7 @@ export default function TrustedBy() {
       logo: "https://claimbuddy.in/images/logo.png",
     },
     {
-      name: "Careline",
+      name: "Carelane",
       logo: "https://tse2.mm.bing.net/th/id/OIP.BBri9CFN5VWVWxudaEHzkQAAAA?rs=1&pid=ImgDetMain&o=7&rm=3",
     },
     {
