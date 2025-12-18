@@ -10,15 +10,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout code (optional, just for record)
+      # 1. Checkout code (optional but good practice)
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # 2. SSH into VPS and deploy
-      - name: Deploy Frontend to VPS
+      # 2. Setup SSH Agent
+      - name: Setup SSH
         uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.VPS_SSH_KEY }}
+
+      # 3. Deploy to VPS
+      - name: Deploy Frontend to VPS
         run: |
           ssh -o StrictHostKeyChecking=no root@82.29.161.242 << 'EOF'
             echo "📂 Pulling latest frontend code..."
@@ -34,7 +37,10 @@ jobs:
             docker rm billing-frontend || true
 
             echo "🚀 Starting new container..."
-            docker run -d --name billing-frontend -p 3000:3000 billing-morphology-academy:latest
+            docker run -d \
+              --name billing-frontend \
+              -p 3000:3000 \
+              billing-morphology-academy:latest
 
             echo "✅ Deployment complete! Frontend running on port 3000."
           EOF
